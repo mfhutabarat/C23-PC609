@@ -1,0 +1,8 @@
+Flask
+tensorflow
+numpy
+keras
+google-cloud-storage
+pillow
+keras
+werkzeug
