@@ -81,8 +81,8 @@ class PredictViewModel(
                         Log.e(TAG, "Error: Gagal memparsing respons")
                     }
                 } else {
-                    _errorMessage.value = "Request gagal"
-                    Log.e(TAG, "Request gagal")
+                    _errorMessage.value = "Server Off"
+                    Log.e(TAG, "Server Off")
                 }
             }
 
