@@ -2,19 +2,27 @@
 Cloud Computing team's responsibilities includes designing the application architecture, determining how the Android app interacts with the machine learning models and how cloud services handle data storage, processing, and retrieval. Users' uploaded images are securely stored in our project's bucket on the Google Cloud Platform. For the authentication process, we connected our Google Cloud Platform project to the Firebase Authentication service, ensuring secure storage of user data in the Firestore database. To enable the detection process within the Android application, we provided the API endpoint of our Flask App, allowing access to the machine learning model processing. This model was deployed on our Virtual Machine Instance using the Compute Engine service from Google Cloud.
 <br>
 
-<br>**Application Architecture**:
+## Application Architecture
 
 <p align="center">
   <img src="image/AppArch.JPG" alt="Application Architecture" height="300" />
 </p>
 
-**Authentication**:
+## Authentication
 
 <p align="center">
-  <img src="image/firebaseauth.png" alt="Application Architecture" height="200" />
+  <img src="image/firebaseauth.png" alt="Firebase Authentication" height="200" />
 </p>
 
 We use the Firebase Authentication service provided by Google Firebase that allows us to easily add user authentication and identity management to our applications. It provides a secure and reliable way to handle user sign-up, sign-in, and other authentication-related features. When a user signs up or logs into an application using Firebase Authentication, the service performs the necessary authentication checks, such as verifying the user's email and password credentials or validating their identity through a third-party provider like Google or Facebook.
+
+## Bucket
+To handle the storage of the images captured by users, we use the Google Cloud Storage (Bucket). Google Cloud Storage offers reliable and scalable storage capabilities, ensuring that our users' images are securely stored.
+
+<p align="center">
+  <img src="image/firebaseauth.png" alt="GCS Bucket" height="200" />
+</p>
+
 
 ## Service
 To enable the detection process within the Android application, we provided the API endpoint of our Flask App, allowing access to the machine learning model processing. This model was deployed on our Virtual Machine Instance using the Compute Engine service from Google Cloud.
@@ -23,7 +31,7 @@ Endpoint API POST: 35.224.238.145/upload
 
 **Postman Documentation**
 <p align="center">
-  <img src="image/AppArch.JPG" alt="Application Architecture" height="300" />
+  <img src="image/postman.jpeg" alt="Postman Documentation" height="300" />
 </p>
 
 
@@ -128,7 +136,7 @@ wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download
 
 6. Run the Flask app using the following command:
 ```shell
-python3 main.py
+python3 app.py
 ```
 
 ### Accessing the API
@@ -138,11 +146,3 @@ Remember to replace "YOUR_SERVERS_IP_ADDRESS" with the actual IP address of your
 
 For the endpoint:
 - POST: your_ip/upload
-- POST: your_ip/save
-- PUT : your_ip/pet/edit?id={id}&name={name}
-- GET : your_api/pet/edit?id={id}&name={name}
-- GET : your_api/pet/{email}
-- GET : your_api/pet/{email}/{id}
-
-### Contributing
-Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or create a pull request.
