@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -30,6 +31,34 @@ class PredictActivity : AppCompatActivity() {
     private lateinit var resultText: TextView
     private lateinit var loadingView: View
 
+    private val multiplePermission = 14
+    private val multiplePermissionList: ArrayList<String> = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        arrayListOf(
+            Manifest.permission.READ_MEDIA_VIDEO,
+            Manifest.permission.READ_MEDIA_IMAGES
+        )
+    } else {
+        arrayListOf(
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
+    }
+
+    private fun hasMultiplePermissions(permissions: List<String>): Boolean {
+        for (permission in permissions) {
+            val result = ContextCompat.checkSelfPermission(this, permission)
+            if (result != PackageManager.PERMISSION_GRANTED) {
+                return false
+            }
+        }
+        return true
+    }
+
+    private fun requestMultiplePermissions(permissions: List<String>, requestCode: Int) {
+        val permissionArray = permissions.toTypedArray()
+        ActivityCompat.requestPermissions(this, permissionArray, requestCode)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_predict)
@@ -43,17 +72,17 @@ class PredictActivity : AppCompatActivity() {
         loadingView = findViewById(R.id.progress_bar)
 
         val sharedPreferencesHelper = SharedPreferencesHelper(this)
-        val uploadViewModel =
-            ViewModelProvider(this, ViewModelFactory(this, sharedPreferencesHelper)).get(
-                PredictViewModel::class.java
-            )
-        uploadViewModel.resultText.observe(this, Observer { result ->
+        predictViewModel = ViewModelProvider(
+            this,
+            ViewModelFactory(this, sharedPreferencesHelper)
+        ).get(PredictViewModel::class.java)
+        predictViewModel.resultText.observe(this, Observer { result ->
             resultText.text = result
             hideLoading()
         })
 
-        uploadViewModel.predictionResult.observe(this, Observer { result ->
-            val resultDescription = uploadViewModel.getResultDescription(result)
+        predictViewModel.predictionResult.observe(this, Observer { result ->
+            val resultDescription = predictViewModel.getResultDescription(result)
             if (resultDescription != null) {
                 showToast("Hasil prediksi: $resultDescription")
                 Log.d(TAG, "Hasil prediksi: $resultDescription")
@@ -64,23 +93,22 @@ class PredictActivity : AppCompatActivity() {
         })
 
         // Mengamati pesan error
-        uploadViewModel.errorMessage.observe(this, Observer { errorMessage ->
+        predictViewModel.errorMessage.observe(this, Observer { errorMessage ->
             showToast(errorMessage)
         })
-
-        selectButton.setOnClickListener {
-            if (hasStoragePermission()) {
-                openGallery()
-            } else {
-                requestStoragePermission()
-            }
-        }
 
         cameraButton.setOnClickListener {
             if (hasCameraPermission()) {
                 openCamera()
             } else {
                 requestCameraPermission()
+            }
+        }
+        selectButton.setOnClickListener {
+            if (hasMultiplePermissions(multiplePermissionList)) {
+                openGallery()
+            } else {
+                requestMultiplePermissions(multiplePermissionList, multiplePermission)
             }
         }
 
@@ -90,7 +118,7 @@ class PredictActivity : AppCompatActivity() {
 
             if (bitmap != null) {
                 showLoading()
-                uploadViewModel.processImage(bitmap)
+                predictViewModel.processImage(bitmap)
             } else {
                 showToast("Pilih gambar terlebih dahulu")
             }
@@ -107,17 +135,6 @@ class PredictActivity : AppCompatActivity() {
 
     private fun hideLoading() {
         loadingView.visibility = View.GONE
-    }
-
-    private fun hasStoragePermission(): Boolean {
-        val permission = Manifest.permission.READ_EXTERNAL_STORAGE
-        val result = ContextCompat.checkSelfPermission(this, permission)
-        return result == PackageManager.PERMISSION_GRANTED
-    }
-
-    private fun requestStoragePermission() {
-        val permission = Manifest.permission.READ_EXTERNAL_STORAGE
-        ActivityCompat.requestPermissions(this, arrayOf(permission), REQUEST_PERMISSION_CODE)
     }
 
     private fun hasCameraPermission(): Boolean {
@@ -143,18 +160,12 @@ class PredictActivity : AppCompatActivity() {
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray,
+        permissions: Array<String>,
+        grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_PERMISSION_CODE && grantResults.isNotEmpty() &&
-            grantResults[0] == PackageManager.PERMISSION_GRANTED
-        ) {
-            if (permissions[0] == Manifest.permission.READ_EXTERNAL_STORAGE) {
-                openGallery()
-            } else if (permissions[0] == Manifest.permission.CAMERA) {
-                openCamera()
-            }
+        if (requestCode == multiplePermission && grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
+            openGallery()
         }
     }
 
@@ -176,7 +187,7 @@ class PredictActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val TAG = "UploadActivity"
+        const val TAG = "PredictActivity"
         private const val REQUEST_PERMISSION_CODE = 1
         private const val REQUEST_IMAGE_GALLERY = 2
         private const val REQUEST_IMAGE_CAMERA = 3
