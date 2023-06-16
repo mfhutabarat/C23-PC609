@@ -20,7 +20,7 @@ We use the Firebase Authentication service provided by Google Firebase that allo
 To handle the storage of the images captured by users, we use the Google Cloud Storage (Bucket). Google Cloud Storage offers reliable and scalable storage capabilities, ensuring that our users' images are securely stored.
 
 <p align="center">
-  <img src="image/firebaseauth.png" alt="GCS Bucket" height="200" />
+  <img src="image/Buck.JPG" alt="GCS Bucket" height="200" />
 </p>
 
 
@@ -48,6 +48,10 @@ Follow the steps below to run the code on your local machine.
 ### Virtual machines
 
 1. Create a virtual machine (VM) in the us-central1 region, using the n1-standard1 machine type, allowing HTTP and HTTPS traffic, reserving a static external IP, and create it.
+
+<p align="center">
+  <img src="image/VM.JPG" alt="GCS Bucket" height="200" />
+</p>
 
 2. Once it's finished, run SSH.
 
@@ -146,3 +150,9 @@ Remember to replace "YOUR_SERVERS_IP_ADDRESS" with the actual IP address of your
 
 For the endpoint:
 - POST: your_ip/upload
+
+## Logging
+<p align="center">
+  <img src="image/AppArch.JPG" alt="Application Architecture" height="300" />
+</p>
+
