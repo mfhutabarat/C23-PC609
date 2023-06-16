@@ -4,3 +4,9 @@ Cloud Computing team's responsibilities includes designing the application archi
 
 <br>**Application Architecture**:
 
+<p align="center">
+  <img src="image/AppArch.JPG" alt="Application Architecture" height="300" />
+</p>
+
+**Authentication**:
+
