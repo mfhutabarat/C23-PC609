@@ -153,6 +153,11 @@ For the endpoint:
 
 ## Logging
 <p align="center">
-  <img src="image/AppArch.JPG" alt="Application Architecture" height="300" />
+  <img src="image/logging.JPG" alt="Logging" height="300" />
+</p>
+
+## Monitoring
+<p align="center">
+  <img src="image/Monitoring.JPG" alt="Monitoring" height="300" />
 </p>
 
