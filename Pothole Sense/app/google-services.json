@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "397482361805",
+    "project_id": "capstone-c23-pc609",
+    "storage_bucket": "capstone-c23-pc609.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:397482361805:android:8442dc95f53724b840fa84",
+        "android_client_info": {
+          "package_name": "com.pc609.potholesense"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6yt1I7nxWUvLPYoSYQKGR_Ri_ttg6qjk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

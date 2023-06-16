@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">Pothole Sense</string>
+
+    <string name="logo">Logo</string>
+    <string name="tittle_app">POTHOLE SENSE</string>
+    <string name="input_name">Masukan Nama Anda</string>
+    <string name="input_email">Masukan Email Anda</string>
+    <string name="input_password">Masukan Kata Sandi Anda</string>
+    <string name="re_password">Masukkan Kembali Kata Sandi Anda</string>
+    <string name="error_email">Masukan Email Yang Valid</string>
+    <string name="question">Belum punya akun? </string>
+    <string name="login">Masuk</string>
+    <string name="register">Daftar</string>
+    <string name="forgot_password">Lupa kata sandi?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //profile
+
+    <string name="username">Nama Pengguna</string>
+    <string name="edit_nama">Edit Nama</string>
+    <string name="edit_email">Ganti Email</string>
+    <string name="edit_password">Ganti Kata Sandi</string>
+    <string name="logout">Keluar</string>
+
+    //fragment
+
+    <string name="enter_new_email">Masukan Email Baru</string>
+    <string name="enter_new_name">Masukan Nama Baru</string>
+    <string name="enter_new_password">Masukan Password Baru</string>
+    <string name="save">Simpan</string>
+
+    //predict
+
+    <string name="gallery">Galeri</string>
+    <string name="camera">Kamera</string>
+    <string name="predict">Prediksi</string>
+    <string name="result_predict">Hasil Prediksi</string>
+
+    //issue
+
+    <string name="date">14/06/2023</string>
+    <string name="deskripsi">Jalan berlubang</string>
+    <string name="judul">Berlubang</string>
+
+    //header
+    <string name="issue_activity_issue">Issue</string>
+    <string name="issue_activity_home">Home</string>
+    <string name="issue_activity_predict">Predict</string>
+
+    //footer
+    <string name="issue">Issue</string>
+    <string name="profile">Profile</string>
+</resources>
