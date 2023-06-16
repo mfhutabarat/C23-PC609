@@ -1,4 +1,4 @@
-# C23-PC609
+# Cloud Computing
 Potholes detection repository
 <br>
 <br>Bangkit 2023 project capstone team consisting of:
