@@ -1,0 +1,86 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:padding="@dimen/_14sdp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_70sdp"
+        android:orientation="horizontal"
+        android:background="@drawable/profile_background">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:src="@drawable/ic_pp" >
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+        <TextView
+            android:id="@+id/tvProfileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_gravity="center"
+            android:text="@string/username"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_18ssp"
+            android:fontFamily="@font/opensans_semibold" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnEditName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/opensans_semibold"
+        android:text="@string/edit_nama"
+        android:textColor="@color/black"
+        app:cornerRadius="@dimen/_16sdp" />
+
+    <Button
+        android:id="@+id/btnEditEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/opensans_semibold"
+        android:text="@string/edit_email"
+        android:textColor="@color/black"
+        app:cornerRadius="@dimen/_16sdp" />
+
+    <Button
+        android:id="@+id/btnChangePassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/opensans_semibold"
+        android:text="@string/edit_password"
+        android:textColor="@color/black"
+        app:cornerRadius="@dimen/_16sdp" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/opensans_semibold"
+        android:text="@string/logout"
+        android:textColor="@color/black"
+        app:cornerRadius="@dimen/_16sdp" />
+
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+
+</LinearLayout>
